@@ -46,4 +46,33 @@ For an image L_j in our testing dataset, we compute M_j by subtracting the mean 
 k-eigenspace as its weight 𝜔_𝑗. Then we find the minimum Euclidean distance as ||𝑤𝑖 − 𝜔𝑗||2 for 𝑖 = 1, … ,200 and save 
 the corresponding label as result. For example, L_j has a face like this:
 
+![a_face](https://user-images.githubusercontent.com/101900124/169807563-47f1686c-ea49-47c8-8e81-669beceb27e4.png)
+
+After subtracting the mean face, we have:
+
+![face_subtract_mean](https://user-images.githubusercontent.com/101900124/169807589-0b30183a-52c9-48e1-a639-18e4688f8754.png)
+
+
+2. PCA & Decision Tree and Random Forest
+
+Based on the prior PCA extracted features, we construct two versions of decision tree to classify the input images
+using on the raw data and PCA-processed data. We choose information gain 𝐺𝑎𝑖𝑛(𝑆, 𝐴) as our attribute selection
+criteria and further prune the tree by altering the maximum depth. To begin with, we evaluate the difference of original 
+entropy of training sample sets (S) and the relative entropy of each feature A, in which the entropy is the measure of
+random variable’s uncertainty. 
+
+A reduce in the level of entropy means that the data are grouped with similar feature so difference within a class 
+decrease. In short, we opt for the attribute which has the highest information gain and repeat the process until no 
+further information gained from splitting the node. To improve predictive accuracy by the reduction of overfitting, we 
+then proceed to the pruning process. We increase the maximum length of the longest path of tree from 1 to 30 and 
+observe the trend of classification error.
+
+The accuracy of decision tree using raw data increased from 49.5% to 57% with max. length = 6 while that of PCA-processed 
+data increased from 1.5% to 3% with max. length = 8. 
+
+The decision tree before pruning:
+
+
+
+
 
