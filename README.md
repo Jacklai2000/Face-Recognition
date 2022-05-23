@@ -13,8 +13,8 @@ approaches would also be made.
 The dataset “archive.zip” consists of 400 images in total from 40 people with 10 different images each (Figure 1). It 
 can be downloaded through Kaggle (https://www.kaggle.com/kasikrit/att-database-of-faces). We assign the labels 
 𝑠1, … , 𝑠40 for recognizing each person. We divide it into training dataset and testing dataset, each contains 40 people 
-with 5 images each, i.e., 50% of the dataset as training data and the other 50% as the testing data.
-
+with 5 images each, i.e., 50% of the dataset as training data and the other 50% as the testing data. The following figure shows 
+all the faces in our dataset:
 
 ![all_faces](https://user-images.githubusercontent.com/101900124/169803583-eb44b3c2-ae13-4ac9-a9fc-0396cd1802a3.png)
 
@@ -33,7 +33,11 @@ we try to apply PCA to reduce the dimensions of our data to see if this can gene
 
 We first compute the eigenfaces. We have our training faces I_1, ..., I_200 which has dimension 112 × 92 and we 
 flatten each I_i as L_i with dimension 10304 × 1. We delete the common features to preserve the key features by 
-subtracting the mean vector from each L_i as M_i and define 𝑆 = [M_1,...,M_200]. The covariance matrix C is built 
+subtracting the mean vector from each L_i as M_i and define 𝑆 = [M_1,...,M_200]. The mean face is like this:
+
+
+
+The covariance matrix C is built 
 by S*t(S) with dimension 10304 × 10304 which is not practical. Hence, we compute the eigenvectors v_i of t(S)*S as we 
 can obtain the eigenvectors u_i by S*v_i. Then we compute it and select the first 𝑘 eigenfaces. We calculate the weight
 vector 𝑤_𝑖 = t(u_i)*M_i, i = 1, ..., 𝑘. At this point, we have completed our PCA extraction part and is ready for the 
