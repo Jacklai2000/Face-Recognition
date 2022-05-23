@@ -35,16 +35,15 @@ We first compute the eigenfaces. We have our training faces I_1, ..., I_200 whic
 flatten each I_i as L_i with dimension 10304 × 1. We delete the common features to preserve the key features by 
 subtracting the mean vector from each L_i as M_i and define 𝑆 = [M_1,...,M_200]. The mean face is like this:
 
+![mean_face](https://user-images.githubusercontent.com/101900124/169807200-eeeacd05-a506-4e48-b6ce-9480f6f37cbe.png)
 
-
-The covariance matrix C is built 
-by S*t(S) with dimension 10304 × 10304 which is not practical. Hence, we compute the eigenvectors v_i of t(S)*S as we 
-can obtain the eigenvectors u_i by S*v_i. Then we compute it and select the first 𝑘 eigenfaces. We calculate the weight
-vector 𝑤_𝑖 = t(u_i)*M_i, i = 1, ..., 𝑘. At this point, we have completed our PCA extraction part and is ready for the 
-classification.
-
-
+The covariance matrix C is built by S*t(S) with dimension 10304 × 10304 which is not practical. Hence, we compute 
+the eigenvectors v_i of t(S)*S as we can obtain the eigenvectors u_i by S*v_i. Then we compute it and select the 
+first 𝑘 eigenfaces. We calculate the weight vector 𝑤_𝑖 = t(u_i)*M_i, i = 1, ..., 𝑘. At this point, we have completed 
+our PCA extraction part and is ready for the classification.
 
 For an image L_j in our testing dataset, we compute M_j by subtracting the mean vector from L_j and project it to our 
 k-eigenspace as its weight 𝜔_𝑗. Then we find the minimum Euclidean distance as ||𝑤𝑖 − 𝜔𝑗||2 for 𝑖 = 1, … ,200 and save 
-the corresponding label as result.
+the corresponding label as result. For example, L_j has a face like this:
+
+
