@@ -92,7 +92,9 @@ as the random forest using PCA-processed data except it is using raw data instea
 ### Result & Discussion
 
 For the PCA part, we have tried different numbers of eigenfaces for classification. The accuracy nearly reaches its 
-peak with the first 10 eigenfaces used and more eigenfaces can just tiny increase the accuracy: (Figure 2) 
+peak with the first 10 eigenfaces used and more eigenfaces can just tiny increase the accuracy: 
+
+<img width="204" alt="2021-12-01" src="https://user-images.githubusercontent.com/101900124/169810521-a1953396-c123-412c-b329-cd0d4840e909.png">
 
 
 
@@ -107,6 +109,25 @@ amount of information for high-dimensional classification and result in a poor a
 would also affect the accuracy of the classification. One of the side factors is the direction of faces such as a lateral 
 face. For the training dataset, using different direction of face would lead to a higher difficulty for recognizing the 
 front face test image.
+
+### Comparison
+
+We focus on the comparisons in KNN, decision tree and random forest. In terms of the variable for splitting, distance 
+will be used for KNN. However, for the decision tree and random forest, principal component values will be used. 
+This causes the difference in the method of the node assignment that KNN minimizes the distance between two 
+transformed weight vectors, while decision tree and random forest focus on maximizing information gains. Finally, for
+the robustness, KNN is sensitive to outliers since it is based on the distance criteria. Outliers usually have larger values
+and hence the result will be affected. The nodes of the decision tree are not sensitive to outliers because the splitting is 
+based on the majority vote. This is similar to the random forest and the multiple trees setting will further balance out 
+the effect of the outlier.
+
+### Conclusion
+
+We have compared the performances of different methods for face recognition and found that KNN with PCA
+generally gives a good classification rate while decision tree and random forest with PCA do not. We also investigated 
+the major reasons for the poor performances of PCA with high-dimensional classifiers, decision tree and random forest
+due to the low-dimensional data after PCA reduces the strength of these classifiers. Hence, we conclude that PCA is 
+suitable when classifiers cannot cope with high-dimensional data.
 
 
 
