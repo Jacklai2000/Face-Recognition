@@ -129,6 +129,12 @@ the major reasons for the poor performances of PCA with high-dimensional classif
 due to the low-dimensional data after PCA reduces the strength of these classifiers. Hence, we conclude that PCA is 
 suitable when classifiers cannot cope with high-dimensional data.
 
+### Reference
+
+[1] Armin Mehri. (2017). Face Recognition Using Random Forest Classifiers Based on PCA, LDA and LBP Features,
+Eastern Mediterranean University Gazimağusa, North Cyprus, (17-26)
+[2] Friedman, J. H. (2017). The elements of statistical learning: Data mining, inference, and prediction.
+
 
 
 
