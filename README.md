@@ -72,6 +72,42 @@ data increased from 1.5% to 3% with max. length = 8.
 
 The decision tree before pruning:
 
+![Df_pca](https://user-images.githubusercontent.com/101900124/169808704-4ead63f6-4d7c-49dd-b736-d3a143b9a899.png)
+
+The decision tree after pruning:
+
+![tree2 0](https://user-images.githubusercontent.com/101900124/169808726-ba701079-ee7c-41e8-ab71-61bd422f370f.png)
+
+
+3. PCA & Random Forest
+
+To further improve the model, we adapt random forest as our second approach. We use the 10 PCA extracted features 
+to create 100 bootstrap samples with size 100 and create the classification trees based on the bootstrap samples. A 
+maximum of 10 features are chosen in deciding the best split in each tree. Then we input the test image and each tree 
+returns a predicted person. We calculate the majority vote of the results of decision trees, and it is the predicted person 
+of the input image according to the random forest using PCA extracted features. The random forest using raw data is the same 
+as the random forest using PCA-processed data except it is using raw data instead of the 10 PCA extracted features.
+
+
+### Result & Discussion
+
+For the PCA part, we have tried different numbers of eigenfaces for classification. The accuracy nearly reaches its 
+peak with the first 10 eigenfaces used and more eigenfaces can just tiny increase the accuracy: (Figure 2) 
+
+
+
+Therefore, we have decided to use 10 eigenfaces for the classification part and the accuracy for PCA and KNN is 90%. 
+The accuracy of decision tree with the use of PCA and that of random forest with the use of PCA are very low, which are 
+3% and 1% respectively. However, the accuracy of random forest using raw data is 91% and that of decision tree using raw
+data is 57% which are higher than the those with the use of PCA.
+
+One of the possible reasons of failures of using PCA on decision tree and random forest is that these classification 
+methods are designed for high-dimensional data. Since PCA reduces the data dimensions, it greatly reduces the 
+amount of information for high-dimensional classification and result in a poor accuracy. Besides, several side factors 
+would also affect the accuracy of the classification. One of the side factors is the direction of faces such as a lateral 
+face. For the training dataset, using different direction of face would lead to a higher difficulty for recognizing the 
+front face test image.
+
 
 
 
