@@ -1,5 +1,6 @@
 #######################################################################
-#STAT 4011 Group 4 Project 2
+#code for face recognition
+# pca+knn and pca+df and pca+rf
 
 
 
